@@ -41,6 +41,11 @@ function apiFacade() {
 		return fetch(endpointURL, options).then(handleHttpErrors);
 	};
 
+	const fetchSearchRecipes = (searchQuery) => {
+		const options = makeOptions("POST", false, searchQuery);
+		return fetch(backend + "/api/restaurant/search", options).then(handleHttpErrors);
+	};
+
 	const makeOptions = (method, addToken, body) => {
 		var opts = {
 			method: method,
@@ -65,7 +70,8 @@ function apiFacade() {
 		login,
 		logout,
 		fetchData,
-		fetchApiData
+		fetchApiData,
+		fetchSearchRecipes
 	}
 }
 
